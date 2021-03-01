@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.Course;
 import com.example.demo.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,10 @@ public class CourseController {
     @PostMapping("/add-course")
     public void add(@RequestBody Course course){
         courseService.add(course);
+    }
+
+    @DeleteMapping("/delete-course/{id}")
+    public void delete(@PathVariable("id") String id) {
+        courseService.delete(id);
     }
 }
